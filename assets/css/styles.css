@@ -1,0 +1,20 @@
+body {
+  background-color: green;
+}
+
+.titulo {
+  background-color: black;
+  color: white;
+  text-align: center;
+  font-size: 20px;
+  padding: 20px 0px;
+}
+
+.card {
+  width: 150px;
+  position: relative;
+}
+
+#jugador-cartas {
+  display: flex;
+}
