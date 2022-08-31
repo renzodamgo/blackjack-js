@@ -17,4 +17,10 @@ body {
 
 #jugador-cartas {
   display: flex;
+  height: 200px;
+}
+
+#jugador-cartas > img {
+  border-radius: 10px;
+  margin-right: -80px;
 }
