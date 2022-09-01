@@ -16,6 +16,7 @@ const cartasJugadorHtml = document.querySelector('#jugador-cartas')
 const cartasComputadoraHtml = document.querySelector('#computadora-cartas')
 
 const createDeck = () => {
+	deck = []
 	for (let i = 2; i <= 10; i++) {
 		for (let tipo of tipos) {
 			deck.push(i + tipo);
@@ -111,4 +112,18 @@ btnDetener.addEventListener('click', () => {
 	btnPedir.disabled = true;
 	btnDetener.disabled = true;
 	turnoComputadora(puntosJugador)
+})
+
+btnNuevo.addEventListener('click', () => {
+	createDeck();
+	shuffleDeck(deck);
+	puntosJugador = 0;
+	puntosComputadora = 0;
+	puntosJugadorHtml.innerText = 0;
+	puntosComputadoraHtml.innerText = 0;
+
+	btnPedir.disabled = false;
+	btnDetener.disabled = false;
+	cartasJugadorHtml.innerHTML = '';
+	cartasComputadoraHtml.innerHTML = ''
 })
