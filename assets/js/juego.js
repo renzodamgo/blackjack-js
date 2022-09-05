@@ -10,14 +10,19 @@
 
 	// Referencias del Html
 
-	const btnPedir = document.querySelector('#btnPedir');
-	const btnDetener = document.querySelector('#btnDetener');
-	const btnNuevo = document.querySelector('#btnNuevo');
+	const btnPedir = document.querySelector('#btnPedir'),
+		btnDetener = document.querySelector('#btnDetener'),
+		btnNuevo = document.querySelector('#btnNuevo');
 
-	const puntosJugadorHtml = document.querySelectorAll('small')[0];
-	const puntosComputadoraHtml = document.querySelectorAll('small')[1];
-	const cartasJugadorHtml = document.querySelector('#jugador-cartas')
-	const cartasComputadoraHtml = document.querySelector('#computadora-cartas')
+	const puntosJugadorHtml = document.querySelectorAll('small')[0],
+		puntosComputadoraHtml = document.querySelectorAll('small')[1],
+		cartasJugadorHtml = document.querySelector('#jugador-cartas'),
+		cartasComputadoraHtml = document.querySelector('#computadora-cartas')
+
+	// Esta función inicializa el juego
+	const inicializarJuego = () => {
+		deck = createDeck();
+	}
 
 	const createDeck = () => {
 		deck = []
@@ -31,7 +36,7 @@
 				deck.push(esp + tipo);
 			}
 		}
-		return deck;
+		return shuffleDeck(deck);
 	}
 
 	const shuffleDeck = (deck) => {
@@ -42,16 +47,12 @@
 		return shuffled;
 	}
 
-	createDeck();
-	const shuffled = shuffleDeck(deck);
-
 	// console.log({ shuffled })
 	const pedirCarta = (deck) => {
 		if (deck.length == 0) {
 			throw "No se pueden elegir mas cartas"
 		}
-		const card = deck.pop()
-		return card
+		return deck.pop()
 	}
 	const valorCarta = (carta) => {
 		// let puntos = 0;
@@ -75,12 +76,12 @@
 		}, 10);
 	}
 
-	pedirCarta(shuffled)
+	//pedirCarta(shuffled)
 	// valorCarta(pedirCarta(shuffled))
 	const turnoComputadora = (puntosMin) => {
 		puntosMin = (puntosMin > 21) ? 0 : puntosMin;
 		do {
-			const carta = pedirCarta(shuffled);
+			const carta = pedirCarta(deck);
 			puntosComputadora = puntosComputadora + valorCarta(carta);
 			puntosComputadoraHtml.innerText = puntosComputadora;
 			const cartaImg = document.createElement('img');
@@ -92,7 +93,7 @@
 	}
 
 	btnPedir.addEventListener('click', () => {
-		const carta = pedirCarta(shuffled);
+		const carta = pedirCarta(deck);
 		puntosJugador = puntosJugador + valorCarta(carta);
 		puntosJugadorHtml.innerText = puntosJugador;
 
@@ -121,8 +122,7 @@
 	})
 
 	btnNuevo.addEventListener('click', () => {
-		createDeck();
-		shuffleDeck(deck);
+		inicializarJuego();
 		puntosJugador = 0;
 		puntosComputadora = 0;
 		puntosJugadorHtml.innerText = 0;
