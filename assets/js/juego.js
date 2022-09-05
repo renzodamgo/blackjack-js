@@ -70,7 +70,9 @@
 		console.log({ puntosJ, puntosC })
 		const ganador = (puntosJ > puntosC) ? "Ganaste :)" :
 			(puntosJ === puntosC) ? "Nadie gana" : "Ganó CPU";
-		window.alert(ganador);
+		setTimeout(() => {
+			window.alert(ganador);
+		}, 10);
 	}
 
 	pedirCarta(shuffled)
