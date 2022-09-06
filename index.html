@@ -25,15 +25,15 @@
 			<button id="btnNuevo" class="btn btn-danger">
 				Nuevo Juego
 			</button>
-			<button id="btnPedir" class="btn btn-primary">Pedir Carta</button>
-			<button id="btnDetener" class="btn btn-primary">Detener</button>
+			<button id="btnPedir" disabled="disabled" class="btn btn-primary">Pedir Carta</button>
+			<button id="btnDetener" disabled="disabled" class="btn btn-primary">Detener</button>
 		</div>
 	</div>
 
 	<div class="row container">
 		<div class="col">
 			<h1>Jugador 1 - <small>0</small></h1>
-			<div id="jugador-cartas">
+			<div id="jugador-cartas" class="divCartas">
 
 
 			</div>
@@ -43,7 +43,7 @@
 	<div class="row container mt-3">
 		<div class="col">
 			<h1>CPU - <small>0</small></h1>
-			<div id="computadora-cartas">
+			<div id="computadora-cartas" class="divCartas">
 
 
 			</div>
@@ -52,6 +52,9 @@
 
 
 	<script src="assets/js/juego.js"></script>
+	<script>
+		miModulo.nuevoJuego();
+	</script>
 
 </body>
 
