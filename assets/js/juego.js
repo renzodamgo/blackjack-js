@@ -73,16 +73,15 @@ const miModulo = (() => {
 
 		setTimeout(() => {
 			if (puntosComputadora === puntosMinimos) {
-				alert('Nadie gana :(');
+				alert("Nadie gana :(");
 			} else if (puntosMinimos > 21) {
-				alert('Computadora gana');
+				alert("Computadora gana");
 			} else if (puntosComputadora > 21) {
-				alert('Jugador Gana');
+				alert("Jugador Gana");
 			} else {
-				alert('Computadora Gana');
+				alert("Computadora Gana");
 			}
 		}, 100);
-
 	};
 
 	const acumularPuntos = (turno, carta) => {
@@ -107,7 +106,6 @@ const miModulo = (() => {
 			const carta = pedirCarta(deck);
 			puntosComputadora = acumularPuntos(puntosJugadores.length - 1, carta);
 			crearCarta(puntosJugadores.length - 1, carta);
-
 		} while (puntosComputadora <= puntosMin);
 		mostrarGanador();
 	};
@@ -116,7 +114,6 @@ const miModulo = (() => {
 		const carta = pedirCarta(deck);
 		const puntosJugador = acumularPuntos(0, carta);
 		crearCarta(0, carta);
-
 
 		console.log({ puntosJugador });
 		if (puntosJugador > 21) {
@@ -143,6 +140,6 @@ const miModulo = (() => {
 	});
 
 	return {
-		nuevoJuego: inicializarJuego
+		nuevoJuego: inicializarJuego,
 	};
 })();
